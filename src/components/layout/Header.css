@@ -1,0 +1,134 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: transparent;
+    z-index: 1000;
+    transition: all var(--transition-speed) ease;
+  }
+  
+  .header.scrolled {
+    background-color: var(--background);
+    box-shadow: 0 4px 12px var(--shadow);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(var(--background-rgb), 0.8);
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    z-index: 1001;
+  }
+  
+  .logo-text {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  
+  .highlight {
+    color: var(--primary);
+  }
+  
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: 32px;
+  }
+  
+  .nav-item a {
+    color: var(--text-primary);
+    font-weight: 500;
+    position: relative;
+    padding: 5px 0;
+  }
+  
+  .nav-item a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary);
+    transition: width var(--transition-speed) ease;
+  }
+  
+  .nav-item a:hover::after,
+  .nav-item a.active::after {
+    width: 100%;
+  }
+  
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    z-index: 1001;
+  }
+  
+  .theme-toggle,
+  .menu-toggle {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all var(--transition-speed) ease;
+  }
+  
+  .theme-toggle:hover,
+  .menu-toggle:hover {
+    background-color: var(--card-bg);
+  }
+  
+  .menu-toggle {
+    display: none;
+  }
+  
+  /* Mobile Navigation */
+  @media (max-width: 768px) {
+    .nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 75%;
+      height: 100vh;
+      background-color: var(--card-bg);
+      transition: right var(--transition-speed) ease;
+      box-shadow: -5px 0 15px var(--shadow);
+      padding: calc(var(--header-height) + 20px) 40px 40px;
+      z-index: 1000;
+    }
+    
+    .nav.nav-open {
+      right: 0;
+    }
+    
+    .nav-list {
+      flex-direction: column;
+      gap: 24px;
+    }
+    
+    .nav-item a {
+      font-size: 18px;
+    }
+    
+    .menu-toggle {
+      display: flex;
+    }
+  }
